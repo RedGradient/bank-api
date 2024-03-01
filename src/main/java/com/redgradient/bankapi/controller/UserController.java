@@ -29,7 +29,7 @@ public class UserController {
         return userService.getUsers();
     }
 
-    @PreAuthorize(AUTHENTICATED + " and " + ONLY_OWNER_BY_ID)
+//    @PreAuthorize(AUTHENTICATED + " and " + ONLY_OWNER_BY_ID)
     @PutMapping(ID)
     public UserDto updateUser(@PathVariable Long id, @RequestBody UserUpdateDto userDto) {
         var updatedUser = userService.updateUser(id, userDto);

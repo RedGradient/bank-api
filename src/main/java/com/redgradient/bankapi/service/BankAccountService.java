@@ -22,11 +22,6 @@ public class BankAccountService {
         return bankAccountRepository.findAll();
     }
 
-//    public BankAccount updateBankAccount(Long id, BankAccount newBankAccount) {
-//        var accountToUpdate = bankAccountRepository.findById(id).orElseThrow();
-//        accountToUpdate.setBalance
-//    }
-
     @Transactional
     public void transferMoney(Long fromAccountId, Long toAccountId, BigDecimal amount) {
         try {

@@ -39,10 +39,14 @@ public class UserService {
 
         var userToUpdate = userRepository.findById(id).orElseThrow();
 
-        userToUpdate.setEmail(userDto.getEmail());
-        userToUpdate.setPhoneNumber(userDto.getPhoneNumber());
+        if (userDto.getEmail() != null) {
+            userToUpdate.setEmail(userDto.getEmail());
+        }
+        if (userDto.getPhoneNumber() != null) {
+            userToUpdate.setPhoneNumber(userDto.getPhoneNumber());
+        }
 
-        return userToUpdate;
+        return userRepository.save(userToUpdate);
     }
 
     public User registerUser(UserRegistrationDto userRegistrationDto) {

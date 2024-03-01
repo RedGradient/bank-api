@@ -2,15 +2,17 @@ package com.redgradient.bankapi.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Builder
 @Getter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
