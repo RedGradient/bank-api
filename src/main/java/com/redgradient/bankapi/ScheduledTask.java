@@ -28,7 +28,7 @@ public class ScheduledTask {
         this.depositRepository = depositRepository;
     }
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 60000)
     public void myTask() {
         depositRepository.findAll().forEach(this::payInterest);
     }
