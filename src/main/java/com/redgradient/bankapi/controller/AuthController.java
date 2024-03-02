@@ -4,8 +4,6 @@ import com.redgradient.bankapi.dto.security.JwtAuthenticationResponse;
 import com.redgradient.bankapi.dto.security.UserLoginDto;
 import com.redgradient.bankapi.dto.security.UserRegistrationDto;
 import com.redgradient.bankapi.service.security.AuthenticationService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

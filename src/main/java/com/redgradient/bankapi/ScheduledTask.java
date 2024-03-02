@@ -4,18 +4,14 @@ import com.redgradient.bankapi.model.BankAccount;
 import com.redgradient.bankapi.model.Deposit;
 import com.redgradient.bankapi.repository.BankAccountRepository;
 import com.redgradient.bankapi.repository.DepositRepository;
-import com.redgradient.bankapi.service.BankAccountService;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Date;
-import java.time.Instant;
 
 @Component
 public class ScheduledTask {

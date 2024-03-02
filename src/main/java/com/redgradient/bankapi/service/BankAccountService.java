@@ -3,7 +3,6 @@ package com.redgradient.bankapi.service;
 import com.redgradient.bankapi.exception.InsufficientFundsException;
 import com.redgradient.bankapi.model.BankAccount;
 import com.redgradient.bankapi.repository.BankAccountRepository;
-import jakarta.persistence.LockModeType;
 import jakarta.persistence.LockTimeoutException;
 import jakarta.persistence.PessimisticLockException;
 import jakarta.transaction.Transactional;

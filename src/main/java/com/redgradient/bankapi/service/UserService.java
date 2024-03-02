@@ -7,14 +7,12 @@ import com.redgradient.bankapi.exception.EmailAlreadyExistsException;
 import com.redgradient.bankapi.exception.NoEmailAndPhoneNumberException;
 import com.redgradient.bankapi.exception.PhoneNumberAlreadyExistsException;
 import com.redgradient.bankapi.model.User;
-import com.redgradient.bankapi.repository.UserRepository;
 import com.redgradient.bankapi.repository.DepositRepository;
-import org.apache.coyote.BadRequestException;
+import com.redgradient.bankapi.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 @Service
 public class UserService {

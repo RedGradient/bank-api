@@ -2,7 +2,6 @@ package com.redgradient.bankapi.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 

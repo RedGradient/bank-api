@@ -2,11 +2,8 @@ package com.redgradient.bankapi.controller;
 
 import com.redgradient.bankapi.dto.UserDto;
 import com.redgradient.bankapi.dto.UserUpdateDto;
-import com.redgradient.bankapi.dto.security.UserLoginDto;
-import com.redgradient.bankapi.dto.security.UserRegistrationDto;
 import com.redgradient.bankapi.model.User;
 import com.redgradient.bankapi.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

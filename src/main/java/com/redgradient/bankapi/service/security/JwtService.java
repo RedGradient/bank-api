@@ -1,8 +1,7 @@
 package com.redgradient.bankapi.service.security;
 
-import io.jsonwebtoken.Claims;
-
 import com.redgradient.bankapi.model.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;

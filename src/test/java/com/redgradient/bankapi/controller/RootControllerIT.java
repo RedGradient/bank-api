@@ -2,7 +2,6 @@ package com.redgradient.bankapi.controller;
 
 import com.redgradient.bankapi.TestUtils;
 import com.redgradient.bankapi.dto.MoneyTransferDto;
-import com.redgradient.bankapi.model.BankAccount;
 import com.redgradient.bankapi.model.User;
 import com.redgradient.bankapi.repository.BankAccountRepository;
 import com.redgradient.bankapi.repository.UserRepository;
@@ -20,12 +19,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.math.BigDecimal;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.math.BigDecimal;
 
 @Transactional
 @SpringBootTest
