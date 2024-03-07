@@ -111,6 +111,7 @@ public class UserService {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .middleName(user.getMiddleName())
+                .email(user.getEmail())
                 .username(user.getUsername())
                 .phoneNumber(user.getPhoneNumber())
                 .dateOfBirth(user.getDateOfBirth())
