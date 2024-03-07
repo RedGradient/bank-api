@@ -9,10 +9,13 @@ import com.redgradient.bankapi.exception.PhoneNumberAlreadyExistsException;
 import com.redgradient.bankapi.model.User;
 import com.redgradient.bankapi.repository.DepositRepository;
 import com.redgradient.bankapi.repository.UserRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -24,8 +27,8 @@ public class UserService {
         this.userRepository = userRepository;
         this.depositRepository = depositRepository;
     }
-    public Iterable<User> getUsers() {
-        return userRepository.findAll();
+    public List<User> getUsers(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 
     public User getUser(Long id) {
@@ -56,17 +59,6 @@ public class UserService {
     public void deleteUser(Long id) {
         var user = depositRepository.findById(id);
         user.ifPresent(depositRepository::delete);
-    }
-
-    public UserDto toDto(User user) {
-        return new UserDto(
-                user.getFirstName(),
-                user.getLastName(),
-                user.getMiddleName(),
-                user.getEmail(),
-                user.getPhoneNumber(),
-                user.getDateOfBirth()
-        );
     }
 
     public User save(User user) {
@@ -112,5 +104,16 @@ public class UserService {
     public User getCurrentUser() {
         var username = SecurityContextHolder.getContext().getAuthentication().getName();
         return getByUsername(username);
+    }
+
+    public UserDto toDto(User user) {
+        return UserDto.builder()
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .middleName(user.getMiddleName())
+                .username(user.getUsername())
+                .phoneNumber(user.getPhoneNumber())
+                .dateOfBirth(user.getDateOfBirth())
+                .build();
     }
 }

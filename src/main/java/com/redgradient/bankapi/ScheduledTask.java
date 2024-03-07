@@ -30,7 +30,7 @@ public class ScheduledTask {
     }
 
     @Transactional
-    private void payInterest(Deposit deposit) {
+    public void payInterest(Deposit deposit) {
         var bankAccount = deposit.getBankAccount();
         var targetBalance = calculateTargetBalance(deposit);
         var balance = calculateNewBalance(deposit);
