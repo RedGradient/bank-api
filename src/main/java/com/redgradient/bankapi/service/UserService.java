@@ -1,21 +1,22 @@
 package com.redgradient.bankapi.service;
 
+import com.querydsl.core.types.Predicate;
 import com.redgradient.bankapi.dto.UserDto;
 import com.redgradient.bankapi.dto.UserUpdateDto;
 import com.redgradient.bankapi.dto.security.UserRegistrationDto;
-import com.redgradient.bankapi.exception.EmailAlreadyExistsException;
+import com.redgradient.bankapi.exception.EmailExistsException;
 import com.redgradient.bankapi.exception.NoEmailAndPhoneNumberException;
-import com.redgradient.bankapi.exception.PhoneNumberAlreadyExistsException;
+import com.redgradient.bankapi.exception.PhoneNumberExistsException;
+import com.redgradient.bankapi.exception.UsernameExistsException;
 import com.redgradient.bankapi.model.User;
 import com.redgradient.bankapi.repository.DepositRepository;
 import com.redgradient.bankapi.repository.UserRepository;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserService {
@@ -27,8 +28,8 @@ public class UserService {
         this.userRepository = userRepository;
         this.depositRepository = depositRepository;
     }
-    public List<User> getUsers(Pageable pageable) {
-        return userRepository.findAll(pageable);
+    public Page<User> getUsers(Predicate predicate, Pageable pageable) {
+        return userRepository.findAll(predicate, pageable);
     }
 
     public User getUser(Long id) {
@@ -67,7 +68,7 @@ public class UserService {
 
     public User create(User user) {
         if (userRepository.existsByUsername(user.getUsername())) {
-            throw new RuntimeException("User with this username already exists");
+            throw new UsernameExistsException();
         }
 
         validateEmailAndPhoneNumber(user.getEmail(), user.getPhoneNumber());
@@ -84,11 +85,11 @@ public class UserService {
         }
 
         if (!emailEmptyOrNull && userRepository.existsByEmail(email)) {
-            throw new EmailAlreadyExistsException(email);
+            throw new EmailExistsException(email);
         }
 
         if (!phoneNumberEmptyOrNull && userRepository.existsByPhoneNumber(phoneNumber)) {
-            throw new PhoneNumberAlreadyExistsException(phoneNumber);
+            throw new PhoneNumberExistsException(phoneNumber);
         }
     }
 
